@@ -8,7 +8,7 @@ package cse360assign2;
  * Make modifications to SimpleList (Assignment1)
  * 
  * @author	Jerimiah Kent (174)
- * @version 1.1
+ * @version 1.2
  * @since	2/27/2019
  * 
  */
@@ -45,6 +45,27 @@ public class SimpleList {
 		tmplist[0] = value;
 		count++;
 		list = tmplist;//replace the old list with the new list
+	}
+	
+	/**
+	 * This method appends an integer to the end of the list.
+	 * If the list is full, increase the size of the list by 50%.
+	 * 
+	 * @param value	an integer being added to the list
+	 */	
+	
+	public void append(int value) {
+		if (count == list.length) {
+			int arrLen = 0;
+			arrLen = (int) ((list.length) * 1.5);
+			int[] tmplist = new int[arrLen];
+			for ( int index = 0; index < count; index ++ ) {
+				tmplist[index] = list[index];
+			}
+			list = tmplist;//replace the old list with the new list
+		}
+		list[count] = value;
+		count++;
 	}
 	
 	/**
@@ -122,5 +143,14 @@ public class SimpleList {
 			}
 		}
 		return location;
+	}
+	
+	/**
+	 * Returns the integer in the first element of the list
+	 * 
+	 * @return		the integer of list[0]
+	 */
+	public int first() {
+		return list[0];
 	}
 }
