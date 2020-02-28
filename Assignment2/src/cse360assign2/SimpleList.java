@@ -86,6 +86,7 @@ public class SimpleList {
 			else {
 				arrlen = list.length - 1;
 			}
+			arrlen = Math.max(arrlen, 1); //cannot be reduced to less than 1 entry
 			int[] tmplist = new int[arrlen];
 			for( int index = this.search(value); index <= count - 2; index ++) {
 				tmplist[index] = list[index + 1];
@@ -151,6 +152,25 @@ public class SimpleList {
 	 * @return		the integer of list[0]
 	 */
 	public int first() {
-		return list[0];
+		if (count==0) {
+			return -1;
+		}
+		else {
+			return list[0];
+		}
+	}
+	
+	/**
+	 * Returns the integer in the last element of the list
+	 * 
+	 * @return		the integer of list[count - 1]
+	 */
+	public int last() {
+		if (count==0) {
+			return -1;
+		}
+		else {
+			return list[count - 1];
+		}
 	}
 }
